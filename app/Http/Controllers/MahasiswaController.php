@@ -15,7 +15,7 @@ class MahasiswaController extends Controller
     {
         $mahasiswa=Mahasiswa::all();
         // Mengambil semua isi tabel
-        $posts=Mahasiswa::orderBy('nim','desc')->paginate(6);
+        $posts=Mahasiswa::orderBy('nim','desc')->paginate(5);
         return view('mahasiswas.index',compact('mahasiswa','posts'))->with('i',(request()->input('page',1)-1)*5);
     }
 
