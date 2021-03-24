@@ -17,7 +17,16 @@
 </p>
 </div>
 @endif
-
+<form method="post" action="{{url('cari')}}" id="myForm">
+    @csrf
+        <div class="form-group">
+        <label for="Nim">Cari</label>
+        <input type="text"name="nim"class="form-control"id="Nim"aria-describedby="Nim"  placeholder="Cari bedasarkan nim">
+        </div>
+        <button type="submit" class="btn btn-success mt-3">
+    cari
+    </button>
+    </form>
 <table class="table table-bordered">
 
 <tr>

@@ -15,3 +15,4 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('mahasiswa', MahasiswaController::class);
+Route::post('cari',[MahasiswaController::class,'cari']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use Illuminate\Support\Facades\DB;
 class MahasiswaController extends Controller
 {
     /**
@@ -106,4 +107,11 @@ class MahasiswaController extends Controller
         Mahasiswa::find($nim)->delete();
         return redirect()->route('mahasiswa.index')->with('success','Mahasiswa Berhasil  Dihapus');
     }
+    public function cari(Request $request)
+	{
+		$mahasiswa=Mahasiswa::where('nim',$request->nim)->first();
+        return view('mahasiswas.cari',compact('mahasiswa'));
+
+	}
+
 }
