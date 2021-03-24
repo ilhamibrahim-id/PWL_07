@@ -42,6 +42,8 @@ class MahasiswaController extends Controller
         ,'kelas'=>'required'
         ,'jurusan'=>'required'
         ,'no_handphone'=>'required'
+        ,'email'=>'required'
+        ,'tanggal_lahir'=>'required'
         ]);//fungsieloquentuntukmenambahdata
         Mahasiswa::create($request->all());
         //jikadataberhasilditambahkan,akankembalikehalamanutama
@@ -86,6 +88,8 @@ class MahasiswaController extends Controller
         ,'kelas'=>'required'
         ,'jurusan'=>'required'
         ,'no_handphone'=>'required'
+        ,'email'=>'required'
+        ,'tanggal_lahir'=>'required'
         ]);
         Mahasiswa::find($nim)->update($request->all());
         return redirect()->route('mahasiswa.index')->with('success','Mahasiswa Berhasil Diupdate');
