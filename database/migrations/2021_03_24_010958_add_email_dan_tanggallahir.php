@@ -13,7 +13,10 @@ class AddEmailDanTanggallahir extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('mahasiswa', function (Blueprint $table) {
+            $table->string('email',50)->unique()->nullable();
+            $table->date('tanggal_lahir')->nullable();
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ class AddEmailDanTanggallahir extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('mahasiswa');
     }
 }
