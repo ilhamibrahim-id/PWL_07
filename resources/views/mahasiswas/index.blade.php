@@ -26,6 +26,8 @@
 	<th>Kelas</th>
 	<th>Jurusan</th>
 	<th>No_Handphone</th>
+    <th>Email</th>
+    <th>Tanggal_Lahir</th>
 	<th width="280px">Action</th>
 </tr>
 @foreach($posts as $index => $mahasiswa)
@@ -35,6 +37,8 @@
 	<td>{{$mahasiswa->kelas}}</td>
 	<td>{{$mahasiswa->jurusan}}</td>
 	<td>{{$mahasiswa->no_handphone}}</td>
+    <td>{{$mahasiswa->email}}</td>
+	<td>{{$mahasiswa->tanggal_lahir}}</td>
 	<td>
 		<form action="{{route('mahasiswa.destroy',['mahasiswa'=>$mahasiswa->nim])}}"method="POST">
 		<a class="btn btn-info"href="{{route('mahasiswa.show',['mahasiswa'=>$mahasiswa->nim])}}">Show</a>

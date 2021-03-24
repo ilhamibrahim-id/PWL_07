@@ -21,6 +21,12 @@
 <li class="list-group-item">
 <b>No_Handphone:</b>{{$mahasiswa->no_handphone}}
 </li>
+<li class="list-group-item">
+    <b>Email:</b>{{$mahasiswa->email}}
+</li>
+<li class="list-group-item">
+    <b>Tanggal_Lahir:</b>{{$mahasiswa->tanggal_lahir}}
+</li>
 </ul>
 </div>
 <a class="btn btn-success mt-3"href="{{route('mahasiswa.index')}}">
