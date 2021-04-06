@@ -15,27 +15,27 @@ class MataKuliahSeeder extends Seeder
     {
         $matkul = [
             [
-                'nama_matkul' => 'Pemrograman Berbasis Objek',
+                'nama_matkul' => 'PWL',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4
             ],
             [
-                'nama_matkul' => 'Pemrograman Web Lanjut',
+                'nama_matkul' => 'PBO',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4
             ],
             [
-                'nama_matkul' => 'Basis Data Lanjut',
+                'nama_matkul' => 'Basdat Lanjut',
+                'sks' => 3,
+                'jam' => 6,
+                'semester' => 4
+            ],
+            [
+                'nama_matkul' => 'SMBD',
                 'sks' => 3,
                 'jam' => 4,
-                'semester' => 4
-            ],
-            [
-                'nama_matkul' => 'Praktikum Basis Data Lanjut',
-                'sks' => 3,
-                'jam' => 6,
                 'semester' => 4
             ],
             [

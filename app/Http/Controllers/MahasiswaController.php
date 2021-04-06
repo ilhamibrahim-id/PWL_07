@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
+use App\Models\Mahasiswa_Matakuliah;
 use Illuminate\Support\Facades\DB;
 class MahasiswaController extends Controller
 {
@@ -134,5 +135,9 @@ class MahasiswaController extends Controller
         return view('mahasiswas.cari',compact('mahasiswa'));
 
 	}
-
+    public function nilai($nim)
+    {
+        $mahasiswa = Mahasiswa::with('kelas', 'matakuliah')->find($nim);
+        return view('mahasiswas.nilai', compact('mahasiswa'));
+    }
 }

@@ -5,11 +5,9 @@
 		<div class="pull-leftmt-2">
 			<h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
 		</div>
-		<div class="float-rightmy-2">
-		<a class="btn btn-success"href="{{route('mahasiswa.create')}}">Input Mahasiswa</a>
-	</div>
 </div>
 </div>
+<h5 style="text-align:right"><a class="btn btn-success"href="{{route('mahasiswa.create')}}">Input Mahasiswa</a></h5>
 <br>
 @if($message=Session::get('success'))
 <div class="alert alert-success">
@@ -55,6 +53,7 @@
 		@csrf
 		@method('DELETE')
 		<button type="submit"class="btn btn-danger">Delete</button>
+        <a class="btn btn-warning" href="{{ route('mahasiswa.nilai', $mahasiswa->nim) }}">Nilai</a>
 	</form>
 </td>
 </tr>
