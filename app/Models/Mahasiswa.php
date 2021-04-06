@@ -5,12 +5,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Mahasiswa as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model; //Model Eloquent
+use App\Models\Kelas;
 class Mahasiswa extends Model //Definisi Model
 {
     protected $table="mahasiswa"; // Eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswas
-    public $timestamps= false;
     protected $primaryKey = 'nim';
-    protected $incerement = false;// Memanggil isi DB Dengan primarykey
  /**
  * The attributes that are mass assignable.
  *

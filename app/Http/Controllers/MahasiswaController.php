@@ -40,7 +40,8 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['nim'=>'required'
+        $request->validate([
+        'nim'=>'required'
         ,'nama'=>'required'
         ,'kelas'=>'required'
         ,'jurusan'=>'required'
@@ -48,9 +49,19 @@ class MahasiswaController extends Controller
         ,'email'=>'required'
         ,'tanggal_lahir'=>'required'
         ]);//fungsieloquentuntukmenambahdata
-        Mahasiswa::create($request->all());
-        //jikadataberhasilditambahkan,akankembalikehalamanutama
-        return redirect()->route('mahasiswa.index')->with('success','Mahasiswa Berhasil Ditambahkan');
+        $kelas = Kelas::find($request->get('kelas'));
+
+        //fungsi eloquent untuk menyimpan data mahasiswa
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->nim = $request->get('nim');
+        $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->jurusan = $request->get('jurusan');
+        $mahasiswa->no_handphone = $request->get('no_handphone');
+        $mahasiswa->kelas()->associate($kelas); // FUngsi eloquent untuk menyimpan belongTo
+        $mahasiswa->save();
+
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
