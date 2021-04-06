@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Models\Kelas;
 use Illuminate\Support\Facades\DB;
 class MahasiswaController extends Controller
 {
@@ -14,10 +15,10 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa=Mahasiswa::all();
+        $mahasiswa=Mahasiswa::with('kelas')->get();
         // Mengambil semua isi tabel
-        $posts=Mahasiswa::orderBy('nim','desc')->paginate(5);
-        return view('mahasiswas.index',compact('mahasiswa','posts'))->with('i',(request()->input('page',1)-1)*5);
+        $paginate=Mahasiswa::orderBy('nim','asc')->paginate(3);
+        return view('mahasiswas.index',['mahasiswa'=>$mahasiswa,'posts'=>$paginate]);
     }
 
     /**
