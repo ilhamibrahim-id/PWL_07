@@ -48,19 +48,19 @@ class MahasiswaController extends Controller
         ,'no_handphone'=>'required'
         ,'email'=>'required'
         ,'tanggal_lahir'=>'required'
-        ]);//fungsieloquentuntukmenambahdata
+        ]);
         $kelas = Kelas::find($request->get('kelas'));
 
-        //fungsi eloquent untuk menyimpan data mahasiswa
+
         $mahasiswa = new Mahasiswa();
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->jurusan = $request->get('jurusan');
         $mahasiswa->no_handphone = $request->get('no_handphone');
-        $mahasiswa->kelas()->associate($kelas); // FUngsi eloquent untuk menyimpan belongTo
+        $mahasiswa->kelas()->associate($kelas);
         $mahasiswa->save();
 
-        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
@@ -84,8 +84,9 @@ class MahasiswaController extends Controller
      */
     public function edit($nim)
     {
-        $mahasiswa=Mahasiswa::find($nim);
-        return view('mahasiswas.edit',compact('mahasiswa'));
+        $mahasiswa = Mahasiswa::with('kelas')->where('nim', $nim)->first();
+        $kelas = Kelas::all();
+        return view('mahasiswas.edit',compact('mahasiswa','kelas'));
     }
 
     /**
@@ -105,8 +106,15 @@ class MahasiswaController extends Controller
         ,'email'=>'required'
         ,'tanggal_lahir'=>'required'
         ]);
-        Mahasiswa::find($nim)->update($request->all());
-        return redirect()->route('mahasiswa.index')->with('success','Mahasiswa Berhasil Diupdate');
+        $kelas = Kelas::find($request->get('kelas'));
+        $mahasiswa = Mahasiswa::find($nim);
+        $mahasiswa->nim = $request->get('nim');
+        $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->jurusan = $request->get('jurusan');
+        $mahasiswa->no_handphone = $request->get('no_handphone');
+        $mahasiswa->kelas()->associate($kelas);
+        $mahasiswa->save();
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Diupdate');
     }
 
     /**
